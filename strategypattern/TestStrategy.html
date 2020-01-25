@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Strategy Pattern Principle</title>
+    <script type="text/javascript" src="./strategy.js" ></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+    class Context{
+        constructor(strategy){
+          this.strategy=strategy;
+        }
+        calculate(a,b){
+          return this.strategy.calculate(a,b);
+        }
+      }
+      var context = new Context(new Addition());
+      var result = context.calculate(4,2);
+      document.write(result+"<br />");
+      var context = new Context(new Subraction());
+      var result = context.calculate(4,2);
+      document.write(result+"<br />");
+      var context = new Context(new Multiplication());
+      var result = context.calculate(4,2);
+      document.write(result+"<br />");
+      var context = new Context(new Division());
+      var result = context.calculate(4,2);
+      document.write(result+ "<br />");
+
+    </script>
+  </body>
+</html>
