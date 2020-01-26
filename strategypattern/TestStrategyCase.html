@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" >
+    <script type="text/javascript" src='./strategycase.js'></script>
+    <title>Stratergy Pattern Case 1</title>
+  </head>
+  <body>
+    <input type="radio" name="card" value="MasterCard" onclick='doTestPay(this,"result")' /><img width=30px height=20px  src="./images/mastercard.svg" alt="Master Card" />
+    <input type="radio" name="card" value="VisaCard" onclick='doTestPay(this,"result")' /><img width=30px height=20px  src="./images/download.svg" alt="Visa Card" />
+    <input type="radio" name="card" value="PayPal" onclick='doTestPay(this,"result")' /><img width=30px height=20px src="./images/paypal.svg" alt="Pay Pal" />
+    <br >
+    <span id="result"></span>
+  </body>
+<footer>Copyright @ Vijay Ravi Adyanthaya</footer>
+<script type="text/javascript">
+  function doTestPay(obj,strx){
+    if(obj.value=="MasterCard"){
+      var payManager=new PayManager(new MasterCard());
+      payManager.pay(100,strx);
+    }
+    if(obj.value=="VisaCard"){
+      var payManager=new PayManager(new VisaCard());
+      payManager.pay(100,strx);
+    }
+    if(obj.value=="PayPal"){
+      var payManager=new PayManager(new PayPal());
+      payManager.pay(100,strx);
+    }
+  }
+
+</script>
+</html>
