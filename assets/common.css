@@ -1,0 +1,12 @@
+// Common CSS file for the whole application.
+
+
+//Singleton Logon css class
+#login{
+  width:300px;
+  height:300px;
+  border:1px solid #cccccc;
+  background-color: #ff0000;
+  text-align: center;
+  padding: 20px;
+}
