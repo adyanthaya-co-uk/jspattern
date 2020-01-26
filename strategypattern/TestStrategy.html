@@ -8,14 +8,7 @@
   </head>
   <body>
     <script type="text/javascript">
-    class Context{
-        constructor(strategy){
-          this.strategy=strategy;
-        }
-        calculate(a,b){
-          return this.strategy.calculate(a,b);
-        }
-      }
+    
       var context = new Context(new Addition());
       var result = context.calculate(4,2);
       document.write(result+"<br />");

@@ -1,3 +1,4 @@
+// Strategy Pattern
 class Strategy{
   calculate( a , b ){}
 }
@@ -21,3 +22,11 @@ class Division extends Strategy {
     return a/b;
   }
 }
+class Context{
+    constructor(strategy){
+      this.strategy=strategy;
+    }
+    calculate(a,b){
+      return this.strategy.calculate(a,b);
+    }
+  }
