@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta http-equiv="menutent-Type" menutent="text/html;charset=UTF-8" />
+    <title>Composition pattern Based Menu</title>
+    <style  type="text/css" >
+      *{margin:0;padding:0;list-style:none;}
+      #menu{
+          width:400px;
+          margin:10px auto;
+      }
+      #menu ul li{
+        float:left;
+        width:200px;
+        height:30px;
+        line-height:30px;
+        text-align:center;
+      }
+      #menu a{
+        text-decoration:none;
+        color:#fff;
+        display:block;
+        width:200px;
+        height:30px;
+        background:#fa9301;
+      }
+      #menu a:hover{
+        back-ground:pink;
+      }
+      #menu ul ul{
+        display:none
+      }
+    </style>
+    <script src="./menu.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="menu">
+
+    </div>
+  </body>
+  <script type="text/javascript">
+    function menuShowHidden(param1,param2){
+      var menuItem=document.getElementById(param1);
+      var childMenu=document.getElementById(param2);
+      menuItem.onmouseover = function(){
+        childMenu.style.display='block';
+      }
+      menuItem.onmouseout=function(){
+        childMenu.style.display='none';
+      }
+    }
+    function createMenu(){
+      var menuHTML="";
+      menuHTML+="<ul>";
+        root.getChildMenuItems().forEach(function(node,i){
+
+          var menuItem=node;
+          var menuItemId="menuItem0" +i;
+          var childItemId="childMenu0" +i;
+
+          menuHTML+="<li id='"+menuItemId+"'>";
+          menuHTML+="<a href='#'>"+menuItem.getName()+"</a>";
+          menuHTML+="<ul id='"+childItemId+"'>";
+
+          menuItem.getChildMenuItems().forEach(function(cnode){
+                var childNode=cnode;
+                menuHTML+="<li><a href='#'>"+childNode.getName()+"</a></li>";
+          });
+          menuHTML+="</ul>";
+          menuHTML+="</li>";
+
+        });
+            menuHTML+="</ul>";
+      document.getElementById("menu").innerHTML=menuHTML;
+      root.getChildMenuItems().forEach(function(node,i){
+      menuShowHidden("menuItem0"+i,"childMenu0"+i);
+      });
+    }
+    window.onload=function(){
+      createMenu();
+    }
+
+  </script>
+
+</html>

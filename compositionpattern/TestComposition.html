@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="composition.js" >
+
+    </script>
+    <title>Composition Design Pattern</title>
+    <style>
+     .content {
+       overflow: auto;
+       border: 5px solid #666;
+     }
+     </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // world is the root
+      var tree =new Tree("World");
+      var root = tree.getRoot();
+      // china is under root
+      china=new Node("China");
+      root.add(china);
+      // adding city under china
+      beijing =new Node("Bei jing");
+      shanghai=new Node("Shang Hai");
+      china.add( beijing);
+      china.add(shanghai);
+      // Adding America to the world
+      america=new Node("United States of America");
+      root.add(america);
+
+      sanfrancisco=new Node("San Francisco");
+      newyork=new Node("New York");
+      america.add(sanfrancisco);
+      america.add(newyork);
+      buildtree(root);
+      function buildtree(root){
+        level="-";
+        document.write('<div class="content" >')
+        document.write(level + root.getName())
+        document.write("<br />");
+        if(root.getChildNodes().length>0){
+          level=level+"-"
+          root.getChildNodes().forEach(buildtree);
+        }
+        document.write("</div>")
+      }
+
+    </script>
+  </body>
+</html>
