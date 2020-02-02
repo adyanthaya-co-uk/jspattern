@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Space Attack - Template Pattern</title>
+    <script src="./template.js" charset="utf-8"></script>
+    <style media="screen">
+      #mycanvas{
+        border:1px solid #c3c3c3;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="250" height="300"></canvas>
+  </body>
+
+<script type="text/javascript">
+  window.onload = function(){
+    var myCanvas=document.getElementById("myCanvas");
+    var context=myCanvas.getContext("2d");
+    var myFlane = new MyFlane();
+    myFlane.setX(110);
+    myFlane.setY(230);
+    var myImage=new Image();
+    myImage.src="../assets/image/myflame.png";
+    myFlane.setImage(myImage);
+    myImage.onload=function(){
+        myFlane.draw(context);
+    };
+
+    var enemyFlane=new EnemyFlane();
+    enemyFlane.setX(110);
+    enemyFlane.setY(50);
+    var enemyImage=new Image();
+    enemyImage.src="../assets/image/enemy.png";
+    enemyFlane.setImage(enemyImage);
+    enemyImage.onload=function(){
+      enemyFlane.draw(context);
+    };
+
+  }
+</script>
+</html>
