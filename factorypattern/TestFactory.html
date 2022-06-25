@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Factory Pattern </title>
+    <script src="./factory.js" charset="utf-8"></script>
+  </head>
+<style media="screen">
+  #myCanvas{
+    border:1px solid #c3c3c3;
+  }
+</style>
+  <body>
+    <div>
+    <input type="radio" name="fly" value=1 onclick="doCreate(this);" />Banshee
+    <input type="radio" name="fly" value=2 onclick="doCreate(this);" />B7 47fly
+    <input type="radio" name="fly" value=3 onclick="doCreate(this);" />A380 fly
+    <br></br>
+    <span id="result"></span>
+  </div>
+  <div>
+  <input type="radio" name="shape" value="Rectangle" onclick="doCreate(this);" />Rectangle
+  <input type="radio" name="shape" value="Square" onclick="doCreate(this);" />Square
+  <input type="radio" name="shape" value="Round" onclick="doCreate(this);" />Round
+  <br></br>
+  <canvas id="myCanvas" width="300" height="300"></canvas>
+  </div>
+</body>
+</html>
+<script type="text/javascript">
+  function doCreate(obj){
+    if(obj.name=="fly"){
+      fly=FlyFactory.create(obj.value);
+      fly.shoot();
+    } else if(obj.name=="shape"){
+      var shape1=ShapeFactory.create(obj.value);
+      var myCanvas=document.getElementById("myCanvas");
+      var context=myCanvas.getContext("2d");
+      shape1.draw(context);
+    }
+  }
+
+</script>
